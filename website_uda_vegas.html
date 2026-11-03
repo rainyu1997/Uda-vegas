@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffd6e7">
+<title>For Uda Vegas 💗</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; padding: 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Trebuchet MS", sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #fff0f5);
+    overflow: hidden;
+  }
+  .card {
+    width: min(100%, 390px); padding: 34px 24px;
+    text-align: center; background: #fff; border-radius: 28px;
+    box-shadow: 0 12px 38px #e88aaa44; position: relative;
+  }
+  .heart { font-size: 64px; animation: beat 1s infinite; }
+  @keyframes beat { 50% { transform: scale(1.16); } }
+  h1 { color: #e75480; font-size: 27px; margin: 14px 0; }
+  h2 { color: #e75480; font-size: 23px; line-height: 1.4; }
+  p { color: #777; line-height: 1.7; }
+  button {
+    border: 0; border-radius: 30px; padding: 14px 22px;
+    margin: 8px 5px; font-size: 15px; font-weight: bold;
+    cursor: pointer; touch-action: manipulation;
+  }
+  #yes { background: #ff6b9d; color: white; }
+  #no { background: #f1edf0; color: #777; }
+  #result { display: none; margin-top: 22px; }
+  .sparkle { position: fixed; pointer-events: none; animation: float 3s linear forwards; }
+  @keyframes float { from { transform: translateY(0); opacity: 1; } to { transform: translateY(-110vh); opacity: 0; } }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="heart">💗</div>
+    <h1>Halo Uda Vegas ganteng!</h1>
+    <p>Ada yang mau aku omongin nihhh...</p>
+    <h2>Besok kita ngopi yukkk 🩷</h2>
+    <p>Aku tunggu jawabannya yaaa,<br>jangan bikin aku penasaran hehe 🥺</p>
+
+    <button id="yes" type="button" onclick="accepted()">GAS SAYANG 💗</button>
+    <button id="no" type="button" onclick="later()">LIAT NANTI 🙈</button>
+
+    <section id="result" aria-live="polite">
+      <h2>YEAYYYY!!! 🥹💕</h2>
+      <p>
+        HEHE, OKE SAYANGGG!<br><br>
+        Besok jangan lupa yaaa,<br>kita ngopi bareng 🩷☕<br><br>
+        Can't wait to see you! 😚
+      </p>
+    </section>
+  </main>
+
+<script>
+function accepted() {
+  document.getElementById("result").style.display = "block";
+  document.getElementById("yes").style.display = "none";
+  document.getElementById("no").style.display = "none";
+  for (let i = 0; i < 18; i++) {
+    const heart = document.createElement("span");
+    heart.className = "sparkle";
+    heart.textContent = ["💗", "💕", "✨", "💖"][Math.floor(Math.random() * 4)];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = (70 + Math.random() * 30) + "vh";
+    heart.style.fontSize = (18 + Math.random() * 18) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 3000);
+  }
+}
+function later() {
+  const btn = document.getElementById("no");
+  const maxX = Math.max(0, window.innerWidth - btn.offsetWidth - 16);
+  const maxY = Math.max(0, window.innerHeight - btn.offsetHeight - 16);
+  btn.style.position = "fixed";
+  btn.style.left = (8 + Math.random() * maxX) + "px";
+  btn.style.top = (8 + Math.random() * maxY) + "px";
+}
+</script>
+</body>
+</html>
